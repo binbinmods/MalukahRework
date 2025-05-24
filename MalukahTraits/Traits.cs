@@ -161,35 +161,31 @@ namespace Malukah
                 // Sanctify increases Dark Explosion damage by 2% per charge of Sanctify
 
                 // trait 4a;
-                // Evasion on you can't be purged unless specified. 
-                // Stealth grants 25% additional damage per charge.",
+                // Dark on Heroes stacks to 32 charges. Vitality on heroes increases All Damage by 1% per charge.",
 
                 // trait 4b:
-                // Heroes Only lose 75% stealth charges rounding down when acting in stealth.
+                // Shadow and Holy Damage +30%. Dark reduces Holy Resistance by 1% per charge.",
 
                 case "dark":
-                    traitOfInterest = trait2b;
-                    if (IfCharacterHas(characterOfInterest, CharacterHas.Trait, traitOfInterest, AppliesTo.Global))
-                    {
-                        __result.AuraDamageType = Enums.DamageType.All;
-                        float multiplierAmount = 1.0f;  //characterOfInterest.HaveTrait(trait4a) ? 0.3f : 0.2f;
-                        __result.AuraDamageIncreasedPerStack = multiplierAmount;
-                        // __result.HealDoneTotal = Mathf.RoundToInt(multiplierAmount * characterOfInterest.GetAuraCharges("shield"));
-                    }
                     traitOfInterest = trait4a;
-                    if (IfCharacterHas(characterOfInterest, CharacterHas.Trait, traitOfInterest, AppliesTo.ThisHero))
-                    {
-                        __result.Removable = false;
-                    }
-                    break;
-                case "stealth":
-                    traitOfInterest = trait2b;
                     if (IfCharacterHas(characterOfInterest, CharacterHas.Trait, traitOfInterest, AppliesTo.Heroes))
                     {
-                        __result.ResistModified = Enums.DamageType.All;
-                        __result.ResistModifiedPercentagePerStack += 5;
+                        __result.MaxCharges = 32;
+                        __result.MaxMadnessCharges = 32;
+                    }
+                    traitOfInterest = trait4b;
+                    if (IfCharacterHas(characterOfInterest, CharacterHas.Trait, traitOfInterest, AppliesTo.Global))
+                    {
+                        __result.ResistModified = Enums.DamageType.Holy;
+                        __result.ResistModifiedPercentagePerStack = -1.0f;
+                    }
+                    break;
+                case "vitality":
+                    traitOfInterest = trait4a;
+                    if (IfCharacterHas(characterOfInterest, CharacterHas.Trait, traitOfInterest, AppliesTo.Heroes))
+                    {
                         __result.AuraDamageType = Enums.DamageType.All;
-                        __result.AuraDamageIncreasedPercentPerStack += 15;
+                        __result.AuraDamageIncreasedPercentPerStack += 1.0f;
                     }
                     break;
             }
