@@ -191,6 +191,28 @@ namespace Malukah
             }
         }
 
+        // [HarmonyPrefix]
+        // [HarmonyPatch(typeof(MatchManager), "DoItem")]
+
+        // public static bool DoItem(
+        //     Character caller,
+        //     Enums.EventActivation theEvent,
+        //     CardData cardData,
+        //     string item,
+        //     Character target,
+        //     int auxInt,
+        //     string auxString,
+        //     int timesActivated = 0)
+        // {
+        //     Hero hero = MatchManager.Instance.GetHeroHeroActive();
+        //     if (item.StartsWith("yinritual") && (hero == null || hero.SubclassName.ToLower() != "voodoowitch"))
+        //     {
+        //         return false;
+        //     }
+        //     return true;
+        // }
+
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Character), "IndirectDamage")]
         public static void IndirectDamagePrefix(
@@ -207,7 +229,7 @@ namespace Malukah
             if (__instance != null && __instance.Alive && AtOManager.Instance.TeamHaveTrait(traitOfInterest) && effect == "dark")
             {
                 int nSanctify = __instance.GetAuraCharges("sanctify");
-                damage = Mathf.RoundToInt(damage * (1 + 0.2f * nSanctify));
+                damage = Mathf.RoundToInt(damage * (1 + 0.02f * nSanctify));
             }
         }
 

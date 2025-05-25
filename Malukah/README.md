@@ -1,4 +1,4 @@
-# Character, the SubclassToReplace
+# Malukah Rework
 
 A hero mod, introducing Character, a mage/healer who has been trapped in a mental cage. She goes on a journey to break out but has two very different ways of doing so overcoming the issues in a calm and focused way or forcefully breaking out of the cage through sheer will.
 
