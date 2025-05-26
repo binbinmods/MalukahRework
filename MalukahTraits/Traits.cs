@@ -84,7 +84,7 @@ namespace Malukah
                 if (CanIncrementTraitActivations(traitId) && _auxString.ToLower() == "dark")// && MatchManager.Instance.energyJustWastedByHero > 0)
                 {
                     LogDebug($"Handling Trait {traitId}: {traitName}");
-                    ApplyAuraCurseToAll("sanctify", 1, AppliesTo.Monsters, _character, useCharacterMods: true);
+                    ApplyAuraCurseToAll("sanctify", 1, AppliesTo.Monsters, _target, useCharacterMods: true);
                     IncrementTraitActivations(traitId);
                 }
             }
@@ -229,7 +229,9 @@ namespace Malukah
             if (__instance != null && __instance.Alive && AtOManager.Instance.TeamHaveTrait(traitOfInterest) && effect == "dark")
             {
                 int nSanctify = __instance.GetAuraCharges("sanctify");
-                damage = Mathf.RoundToInt(damage * (1 + 0.02f * nSanctify));
+                int nScourge = __instance.GetAuraCharges("scourge");
+                float origDamage = damage * (1 - 0.10f * nScourge);
+                damage = Mathf.RoundToInt(origDamage * (1 + 0.02f * nSanctify + 0.10f * nScourge));
             }
         }
 
