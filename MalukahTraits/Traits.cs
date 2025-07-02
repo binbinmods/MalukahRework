@@ -45,12 +45,12 @@ namespace Malukah
         {
             // get info you may need
             Enums.EventActivation _theEvent = Traverse.Create(__instance).Field("theEvent").GetValue<Enums.EventActivation>();
-            Character _character = Traverse.Create(__instance).Field("Malukah").GetValue<Character>();
+            Character _character = Traverse.Create(__instance).Field("character").GetValue<Character>();
             Character _target = Traverse.Create(__instance).Field("target").GetValue<Character>();
             int _auxInt = Traverse.Create(__instance).Field("auxInt").GetValue<int>();
             string _auxString = Traverse.Create(__instance).Field("auxString").GetValue<string>();
             CardData _castedCard = Traverse.Create(__instance).Field("castedCard").GetValue<CardData>();
-            Traverse.Create(__instance).Field("Malukah").SetValue(_character);
+            Traverse.Create(__instance).Field("character").SetValue(_character);
             Traverse.Create(__instance).Field("target").SetValue(_target);
             Traverse.Create(__instance).Field("theEvent").SetValue(_theEvent);
             Traverse.Create(__instance).Field("auxInt").SetValue(_auxInt);
@@ -69,8 +69,6 @@ namespace Malukah
 
             if (_trait == trait0)
             {
-                // Gain 1 evade at combat start 
-                _character.SetAuraTrait(_character, "evade", 1);
             }
 
 
@@ -84,7 +82,7 @@ namespace Malukah
                 if (CanIncrementTraitActivations(traitId) && _auxString.ToLower() == "dark")// && MatchManager.Instance.energyJustWastedByHero > 0)
                 {
                     LogDebug($"Handling Trait {traitId}: {traitName}");
-                    ApplyAuraCurseToAll("sanctify", 1, AppliesTo.Monsters, _target, useCharacterMods: true);
+                    ApplyAuraCurseToAll("sanctify", 1, AppliesTo.Monsters, _character, useCharacterMods: true);
                     IncrementTraitActivations(traitId);
                 }
             }
@@ -128,7 +126,7 @@ namespace Malukah
         {
             if ((UnityEngine.Object)MatchManager.Instance == (UnityEngine.Object)null)
                 return false;
-            Traverse.Create(__instance).Field("Malukah").SetValue(_character);
+            Traverse.Create(__instance).Field("character").SetValue(_character);
             Traverse.Create(__instance).Field("target").SetValue(_target);
             Traverse.Create(__instance).Field("theEvent").SetValue(_theEvent);
             Traverse.Create(__instance).Field("auxInt").SetValue(_auxInt);
