@@ -34,22 +34,12 @@ def zip_mods():
 
 if __name__ == "__main__":  
     mod_dir = "Malukah"
-    # config_dir = f"{mod_dir}Configs"    
     content_destination_dir = mod_dir
-    print(content_destination_dir)
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    print(script_dir)
     
-    # Copy to Local Game
     source = f"{script_dir}/{mod_dir}/BepInEx/config/Obeliskial_importing/{mod_dir}"
-    print(source)
     bepinex_dir = os.path.abspath(os.path.join(script_dir, '..', '..', '..'))
-    destination = f"{bepinex_dir}/config/Obeliskial_importing/{content_destination_dir}"
-    print(destination)
+    destination = f"{bepinex_dir}/config/Obeliskial_importing/{content_destination_dir}"    
+
     copy_directory(source, destination)
-
-    # # Copy to Local Mod folder to zip
-    # mod_destination = f"{script_dir}/{mod_dir}/BepInEx/config/Obeliskial_importing/{content_destination_dir}"
-    # copy_directory(source, mod_destination)
-
     zip_mods()

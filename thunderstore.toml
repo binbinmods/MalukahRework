@@ -1,0 +1,32 @@
+[config]
+schemaVersion = "0.2.1"
+
+[package]
+namespace = "Binbin"
+name = "Malukah_the_Evangelist"
+versionNumber = "0.2.1"
+description = "Update for Malukah, leaning into the yin-yang aspect of her kit."
+websiteUrl = "https://github.com/binbinmods/MalukahRework"
+containsNsfwContent = false
+
+[package.dependencies]
+meds-Obeliskial_Essentials = "1.5.1"
+meds-Obeliskial_Content = "1.7.2"
+
+
+[build]
+icon = "./icon.png"
+readme = "./README.md"
+outdir = "./build"
+
+[[build.copy]]
+source = "./Malukah"
+target = ""
+
+
+[publish]
+repository = "https://thunderstore.io"
+communities = [ "across-the-obelisk", ]
+[publish.categories]
+across-the-obelisk = [ "mods", ]
+
