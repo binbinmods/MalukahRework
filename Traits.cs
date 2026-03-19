@@ -202,10 +202,9 @@ namespace Malukah
             Character __instance,
             Enums.DamageType damageType,
             ref int damage,
+            Character casterCharacter,
             AudioClip sound = null,
-            string effect = "",
-            string sourceCharacterName = "",
-            string sourceCharacterId = "")
+            string effect = "")
         {
             LogInfo($"HealAuraCursePrefix {subclassName}");
             string traitOfInterest = trait2b;
